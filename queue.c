@@ -38,7 +38,7 @@ void display()
  {
 for(int i=front;i<(rear+1);i++)
  {
-	printf("%d",queue[i]);
+	printf("%d\n",queue[i]);
  }
  }
 }
