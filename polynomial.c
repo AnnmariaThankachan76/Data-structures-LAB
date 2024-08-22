@@ -22,7 +22,7 @@ for(i=0;i<n;i++)
 printf("The entered elements in polynomial form:\n");
 for(i=0;i<n;i++)
 {
-	printf("%dx^%d",x[i].coef,x[i].ex);
+	printf("(%dx^%d)",x[i].coef,x[i].ex);
 	if ((i<n-1) )
 	printf(" + ");
 }
