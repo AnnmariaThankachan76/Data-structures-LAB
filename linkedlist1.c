@@ -6,16 +6,16 @@ struct node
         int data;
         struct node*link;
     };
-struct node *current,*start= NULL;
+struct node *current,*head= NULL;
 void createnode()
 {
     struct node*newnode=(struct node *) malloc(sizeof(struct node));
     printf("enter the value\n");
     scanf("%d",&newnode->data);
     newnode->link=NULL;
-    if(start==NULL)
+    if(head==NULL)
     {
-        start=newnode;
+        head=newnode;
         current=newnode;
     }
     else
@@ -27,14 +27,14 @@ void createnode()
 }
 void display()
 {
-    if(start==NULL)
+    if(head==NULL)
     {
         printf("list is empty\n");
     }
     else
     {
         printf("the linked list is\n");
-        struct node*temp=start;
+        struct node*temp=head;
         while(temp!=NULL)
         {
             printf("%d\n",temp->data);
@@ -49,8 +49,8 @@ void insertionnodefront()
    struct node*ptr=(struct node*) malloc(sizeof(struct node));
    printf("enter the value\n");
    scanf("%d",&ptr->data);
-   ptr->link=start;
-   start=ptr;
+   ptr->link=head;
+   head=ptr;
    printf("node inserted at front successfully\n");
 
 }
@@ -60,7 +60,7 @@ void insertionnodeend()
    printf("enter the value\n");
    scanf("%d",&ptr1->data);
    ptr1->link=NULL;
-   struct node*temp=start;
+   struct node*temp=head;
    while(temp->link!=NULL)
    {
        temp=temp->link;
@@ -72,14 +72,14 @@ void insertionnodeend()
 void insertionnodeany()
 {
    struct node*ptr2=(struct node*) malloc(sizeof(struct node));
-   int pos,i=1;
+   int key,i=1;
    printf("enter the value\n");
    scanf("%d",&ptr2->data);
-   struct node*temp=start;
+   struct node*temp=head;
    printf("enter the position to be inserted\n");
-   scanf("%d",&pos);
-   pos--;
-   while(i<pos)
+   scanf("%d",&key);
+   key--;
+   while(i<key)
    {
        temp=temp->link;
        i++;
@@ -90,40 +90,40 @@ void insertionnodeany()
 }
 void deletionnodefront()
 {
-    if (start==NULL)
+    if (head==NULL)
     {
         printf("link list empty\n");
     }
-    else if (start->link==NULL)
+    else if (head->link==NULL)
     {
-        struct node*temp=start;
-        start=NULL;
+        struct node*temp=head;
+        head=NULL;
         free(temp);
     }
     else
     {
-        struct node*temp=start;
-        start=temp->link;
+        struct node*temp=head;
+        head=temp->link;
         free(temp);
     }
     printf("node successfully deleted from front\n");
 }
 void deletionnodeend()
 {
-    if (start==NULL)
+    if (head==NULL)
     {
         printf("link list empty\n");
     }
-    else if (start->link==NULL)
+    else if (head->link==NULL)
     {
-        struct node*temp=start;
-        start=NULL;
+        struct node*temp=head;
+        head=NULL;
         free(temp);
     }
     else
     {
-         struct node*temp1=start;
-         struct node*temp2=start;
+         struct node*temp1=head;
+         struct node*temp2=head;
          while(temp1->link!=NULL)
          {
              temp2=temp1;
@@ -136,21 +136,21 @@ void deletionnodeend()
 }
 void deletionnodeany()
 {
-    if (start==NULL)
+    if (head==NULL)
     {
         printf("link list empty\n");
     }
-    else if (start->link==NULL)
+    else if (head->link==NULL)
     {
-        struct node*temp=start;
-        start=NULL;
+        struct node*temp=head;
+        head=NULL;
         free(temp);
     }
     else
     {
         int pos1,i=1;
-        struct node*temp1=start;
-        struct node*temp2=start;
+        struct node*temp1=head;
+        struct node*temp2=head;
         printf("enter the node position to delete\n");
         scanf("%d",&pos1);
         pos1--;
@@ -171,6 +171,7 @@ void main()
     int choice=0;
     while(choice!=9)
     {
+    	printf("***********************************");
         printf("\nLINKED LIST\n");
         printf("1.create node\n");
       	printf("2.Insertion node at front\n");
@@ -210,13 +211,16 @@ void main()
             display();
             break;
         case 9:
-            printf("Exited Successfully ");
+            printf("Exited Successfully ");;
             break;
         default:
             printf("invalid choice...\n");
         }
     }
 }
+
+
+
 
 
 
